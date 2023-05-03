@@ -5,12 +5,18 @@ shot = input('shot number?');
 
 cali_shot = input('calibration shot number? (0 = none, 1 = self calibration)');
 
-load([num2str(shot),'\',num2str(shot),'.mat'])
+load(['C:\Users\Liao\Documents\50g\W7-X_OP2.1a_exp\DEP_data\',num2str(shot),'\',num2str(shot),'.mat'])
 % time = time+0.0025;
 
-DEP_data_pre_plot
+
+%%
+DEP_filt
+
+DEP_para_plot
 
 DEP_plunge_evolution
+
+DEP_plunge_evolution_plot
 
 if cali_shot == 1
 
