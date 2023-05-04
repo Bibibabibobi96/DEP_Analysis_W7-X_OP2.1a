@@ -24,6 +24,14 @@ for i = 1:6
 %         legend('in','out','Location','southwest')
         xlabel('R(mm)','FontSize',font_size+2)
     end
+
+    if shot < 221206033
+        ylim([-0.02 0.11])
+    elseif shot < 221206050
+        ylim([-0.02 0.55])
+    else
+        ylim([-0.05 0.33])
+    end
 end
 %     linkaxes([ax],'xy')
 
@@ -47,6 +55,14 @@ for i = 1:6
     if i == 6
 %         legend('in','out','Location','southwest')
         xlabel('R(mm)','FontSize',font_size+2)
+    end
+
+    if shot < 221206033
+        ylim([-0.02 0.11])
+    elseif shot < 221206050
+        ylim([-0.02 0.55])
+    else
+        ylim([-0.05 0.33])
     end
 end
 
@@ -85,6 +101,13 @@ for i = 1:6
         xlabel('R(mm)','fontsize',font_size+2)
     end
     %
+    if shot < 221206033
+        ylim([-0.06 0.06])
+    elseif shot < 221206050
+        ylim([-0.15 0.22])
+    else
+        ylim([-0.15 0.11])
+    end
 end
 
 linkaxes(ax3,'x')

@@ -5,8 +5,10 @@ mesh.time_gap = 200;
 mesh.r_gap = 1000;
 if shot < 221206037
     mesh.max_r = 6080;
+elseif shot == 221207050 || shot == 221207054
+    mesh.max_r = 6200;
 else
-    mesh.max_r = 6130;
+    mesh.max_r = 6150;
 end
 font_size = 12;
 
