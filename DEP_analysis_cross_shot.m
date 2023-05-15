@@ -12,6 +12,8 @@ for i = 1:analysis_number
     plunge(i) = input('corresponding plunge? ');
 end
 
+ndowns = 100;
+
 figure(301) % current evolution plot
 t1 = tiledlayout(analysis_number,3);
 
@@ -25,7 +27,7 @@ for n = 1:analysis_number
     
     clear IA IB IA_raw IB_raw
 
-    if ~exist('shot') || shot ~= shot_list(n)
+%     if ~exist('shot') || shot ~= shot_list(n)
         load(['C:\Users\Liao\Documents\50g\W7-X_OP2.1a_exp\DEP_data\',...
             num2str(shot_list(n)),'\',num2str(shot_list(n)),'.mat'])
 
@@ -55,7 +57,7 @@ for n = 1:analysis_number
             end
         end
 
-    end
+%     end
 
     figure(301)
     DEP_plunge_evolution_plot_cross_shot
@@ -90,20 +92,23 @@ t2.Padding = 'compact';
 figure(303)
 legend_text = [];
 for i = 1:analysis_number
-    legend_text =  [legend_text;[num2str(shot-221200000),', ',num2str(plunge(i))]];
+    legend_text =  [legend_text;[num2str(shot_list(i)-221200000),', ',num2str(plunge(i))]];
 end
 
-for i = 1:3
-    ax3(6*i);
-
+% for i = 1:3
+%     ax3(6*i);
+%     ax3(1)
     for j = 1:n
         h(j) = plot(NaN,NaN,'color',C(j,:),'LineStyle','-','Marker','none');
     end
 
-    legend(h, legend_text,'Location','northeast');
-end
+    legend(h, legend_text,'Location','best');
+% end
 
-linkaxes([ax3(1:12)],'xy')
-linkaxes([ax3(13:18)],'xy')
+linkaxes([ax3(1:10)],'xy')
+linkaxes([ax3(11:15)],'xy')
+linkaxes(ax3,'x')
+linkaxes([ax3(1:10)],'xy')
+linkaxes([ax3(11:15)],'xy')
 t3.TileSpacing = 'none';
 t3.Padding = 'compact';

@@ -1,7 +1,7 @@
 %%
 clear mesh
 
-mesh.time_gap = 200;
+mesh.time_gap = 500;
 mesh.r_gap = 1000;
 if shot < 221206037
     mesh.max_r = 6080;

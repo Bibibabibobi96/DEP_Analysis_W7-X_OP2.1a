@@ -16,12 +16,13 @@ fft.fmin = 0;  % Minimum frequency of interest
 fft.fmax = 2e5; % Maximum frequency of interest
 
 % Set the parameters for the windowed Fourier transform
-fft.window = 256/8;  % Window size
-fft.noverlap = 200/8;  % Number of overlapping samples
 fft.nfft = 1024 ;  % Number of FFT points
+fft.window = hann( fft.nfft );  % Window size
+fft.noverlap = fft.nfft/2;  % Number of overlapping samples
 
 % Calculate the windowed Fourier transform
-[fft.S, fft.F, fft.T] = spectrogram(fft.x, fft.window, fft.noverlap, fft.nfft, fft.Fs);
+% [fft.S, fft.F, fft.T] = spectrogram(fft.x, fft.window, fft.noverlap, fft.nfft, fft.Fs);
+[fft.S, fft.F, fft.T] = spectrogram(fft.x, fft.window, fft.noverlap, [], fft.Fs);
 
 % Find the indices corresponding to the frequency domain of interest
 fft.idx_min = find(fft.F >= fft.fmin, 1);

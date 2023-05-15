@@ -5,7 +5,7 @@ i = plunge( n );
 %----------------------------------------
 ax1(3*n-2) = nexttile(3*n-2);
 
-imagesc(mesh.r(i,:),mesh.time{i},mesh.IA{i},'AlphaData',~isnan(mesh.IA{i}));hold on
+imagesc(mesh.r(i,:),mesh.time{i}, mesh.IA{i},'AlphaData',~isnan(mesh.IA{i}));hold on
 shading interp
 % colormap('hot')
 %     freezeColors;
@@ -46,7 +46,7 @@ set(gca,'yticklabel',[],'fontsize', font_size)
 %----------------------------------------
 ax1(3*n-1) = nexttile(3*n-1);
 
-imagesc(mesh.r(i,:),mesh.time{i},mesh.IB{i},'AlphaData',~isnan(mesh.IB{i}));hold on
+imagesc(mesh.r(i,:),mesh.time{i}, mesh.IB{i},'AlphaData',~isnan(mesh.IB{i}));hold on
 shading interp
 % colormap('hot')
 %     freezeColors;
@@ -85,8 +85,7 @@ set(gca,'yticklabel',[],'fontsize', font_size)
 
 %----------------------------------------
 ax1(3*n) = nexttile(3*n);
-imagesc(mesh.r(i,:),mesh.time{i},mesh.IB{i} - mesh.IA{i},...
-    'AlphaData',~isnan(mesh.IB{i} - mesh.IA{i}));hold on
+imagesc(mesh.r(i,:),mesh.time{i},mesh.IB{i} - mesh.IA{i},'AlphaData',~isnan(mesh.IB{i} - mesh.IA{i}));hold on
 shading interp
 % colormap('turbo')
 %     colorbar
