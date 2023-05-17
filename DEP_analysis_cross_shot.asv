@@ -18,7 +18,7 @@ figure(301) % current evolution plot
 t1 = tiledlayout(analysis_number,3);
 
 figure(302) % Te, ne plot
-t2 = tiledlayout(7,analysis_number);
+t2 = tiledlayout(6,analysis_number);
 
 figure(303) % current of channels plot
 t3 = tiledlayout(6,3);
@@ -74,7 +74,7 @@ for n = 1:analysis_number
     end
 
 end
-%%
+
 figure(301)
 t1.TileSpacing = 'none';
 t1.Padding = 'compact';
@@ -84,7 +84,7 @@ colormap(colorm(20));
 
 figure(302)
 linkaxes(ax2,'x')
-for i = 1:7
+for i = 1:6
     linkaxes( ax2((i-1)*n+1:i*n), 'y')
 end
 
@@ -106,7 +106,9 @@ for j = 1:n
     h(j) = plot(NaN,NaN,'color',C(j,:),'LineStyle','-','Marker','none','LineWidth',2);
 end
 
-legend(h, legend_text,'Box','off','Location','best','color','none','Fontsize',11);
+lgnd = legend(h, legend_text,'Location','best');
+set(lgnd,'color','none');
+clear lgnd
 % end
 
 linkaxes([ax3(1:10)],'xy')

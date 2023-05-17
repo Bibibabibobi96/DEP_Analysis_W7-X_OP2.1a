@@ -3,7 +3,7 @@ clear
 tic
 shot = input('shot number?');
 
-cali_shot = input('calibration shot number? (0 = none, 1 = self calibration)');
+cali_shot = input(['calibration shot number?',newline,'(0 = none, 1 = self calibration)']);
 
 load(['C:\Users\Liao\Documents\50g\W7-X_OP2.1a_exp\DEP_data\',num2str(shot),'\',num2str(shot),'.mat'])
 % time = time+0.0025;

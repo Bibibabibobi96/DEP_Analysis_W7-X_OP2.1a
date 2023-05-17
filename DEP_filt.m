@@ -13,8 +13,8 @@ Wn2 = 2*(fs2)/fs;
 [b2,a2]=butter(1,Wn2);
 % [b, a] = butter(10, 60/5000, 'high');
 
-Vp = 2.8 * Te_raw + Vf;
-Vp = filtfilt(b,a,Vp);
+Vp = 2.8 * filtfilt(b2,a2,Te_raw) + filtfilt(b2,a2,Vf);
+% Vp = filtfilt(b2,a2,Vp);
 Vp = smoothdata(Vp,"gaussian",200);
 
 % position0 = position;
@@ -23,8 +23,10 @@ Vp = smoothdata(Vp,"gaussian",200);
 
 clear Er
 for i = 1:plunge_n
-    Er{2*i-1} = -gradient( Vp(plunge_index(3*i-2):plunge_index(3*i-1)),position(plunge_index(3*i-2):plunge_index(3*i-1)) );
-    Er{2*i} = -gradient( Vp(plunge_index(3*i-1):plunge_index(3*i)),position(plunge_index(3*i-1):plunge_index(3*i)) );
+    Er{2*i-1} = -gradient( Vp(plunge_index(3*i-2):plunge_index(3*i-1)), ...
+        position(plunge_index(3*i-2):plunge_index(3*i-1)) );
+    Er{2*i} = -gradient( Vp(plunge_index(3*i-1):plunge_index(3*i)), ...
+        position(plunge_index(3*i-1):plunge_index(3*i)) );
 %     Er{2*i-1} = filtfilt(b,a,Er{2*i-1});
 %     Er{2*i} = filtfilt(b,a,Er{2*i});
 end

@@ -99,7 +99,7 @@ for i = 1:5
         set(gca,'xticklabel',[])
 %     end
     if i == 1
-        title('I_{net}(I_B-I_A)')
+        title('I_{net}(I_B- I_A)')
     end
 %     if i == 6
 %         legend('in','out','Location','southwest')
@@ -122,10 +122,10 @@ if n == length(shot_list)
 ax3(16) = nexttile(16);
 if sum(shot_list > 221206036) > 0
 load(['C:\Users\Liao\Documents\50g\W7-X_OP2.1a_exp\FLT_result\connection_length\2D\' ...
-    'OP1.2 Standard (CAD) HINT equilibrium with beta=1.08%Lc.mat'])
+    'OP1.2 Standard (CAD) HINT equilibrium with beta=1.08%.mat'])
 semilogy(linspace(6000, 6100, 250),clenBwd.length(425,:),'LineWidth',2);hold on
 load(['C:\Users\Liao\Documents\50g\W7-X_OP2.1a_exp\FLT_result\connection_length\2D\' ...
-    'OP1.2 Standard (CAD) HINT equilibrium with beta=0.11%Lc11.mat'])
+    'OP1.2 Standard (CAD) HINT equilibrium with beta=0.11% + 3kA.mat'])
 semilogy(linspace(6000, 6100, 250),clenBwd.length(425,:),'LineWidth',2);hold on
 load(['C:\Users\Liao\Documents\50g\W7-X_OP2.1a_exp\FLT_result\connection_length\1D\' ...
     'OP1.2 Standard (CAD)HINT equilibrium with beta=1.08%+5kA.mat'])
@@ -137,21 +137,24 @@ load(['C:\Users\Liao\Documents\50g\W7-X_OP2.1a_exp\FLT_result\connection_length\
 semilogy(linspace(6000, 6100, 250),clenBwd{1}.length,'LineWidth',2);hold on
 end
 if sum(shot_list > 221206036) == length(shot_list)
-    legend('EJM (1% \beta)','EJM+3kA(1% \beta)','EJM+5kA(1% \beta)','Location','best','fontsize',6)
+    legend('EJM (1% \beta)','EJM+3kA(1% \beta)','EJM+5kA(1% \beta)', ...
+        'Box','off','Location','best','color','none','fontsize',10)
 elseif sum(shot_list < 221206036) == length(shot_list)
-    legend('FTM (1% \beta)','Location','best','fontsize',6)
+    legend('FTM (1% \beta)', ...
+        'Box','off','Location','best','color','none','fontsize',10)
 else
-legend('EJM (1% \beta)','EJM+3kA(1% \beta)','EJM+5kA(1% \beta)','FTM (1% \beta)','Location','best','fontsize',6)
+legend('EJM (1% \beta)','EJM+3kA(1% \beta)','EJM+5kA(1% \beta)','FTM (1% \beta)', ...
+    'Box','off','Location','best','color','none','fontsize',10)
 end
 xlabel('R(mm)','FontSize',font_size+2);ylabel('L_c(m)')
 
 ax3(17) = nexttile(17);
 if sum(shot_list > 221206036) > 0
 load(['C:\Users\Liao\Documents\50g\W7-X_OP2.1a_exp\FLT_result\connection_length\2D\' ...
-    'OP1.2 Standard (CAD) HINT equilibrium with beta=1.08%Lc.mat'])
+    'OP1.2 Standard (CAD) HINT equilibrium with beta=1.08%.mat'])
 semilogy(linspace(6000, 6100, 250),clenFwd.length(425,:),'LineWidth',2);hold on
 load(['C:\Users\Liao\Documents\50g\W7-X_OP2.1a_exp\FLT_result\connection_length\2D\' ...
-    'OP1.2 Standard (CAD) HINT equilibrium with beta=0.11%Lc11.mat'])
+    'OP1.2 Standard (CAD) HINT equilibrium with beta=0.11% + 3kA.mat'])
 semilogy(linspace(6000, 6100, 250),clenFwd.length(425,:),'LineWidth',2);hold on
 load(['C:\Users\Liao\Documents\50g\W7-X_OP2.1a_exp\FLT_result\connection_length\1D\' ...
     'OP1.2 Standard (CAD)HINT equilibrium with beta=1.08%+5kA.mat'])
@@ -167,10 +170,10 @@ set(gca,'yticklabel',[]); xlabel('R(mm)','FontSize',font_size+2)
 ax3(18) = nexttile(18);
 if sum(shot_list > 221206036) > 0
 load(['C:\Users\Liao\Documents\50g\W7-X_OP2.1a_exp\FLT_result\connection_length\2D\' ...
-    'OP1.2 Standard (CAD) HINT equilibrium with beta=1.08%Lc.mat'])
+    'OP1.2 Standard (CAD) HINT equilibrium with beta=1.08%.mat'])
 semilogy(linspace(6000, 6100, 250),clenFwd.length(425,:) + clenBwd.length(425,:),'LineWidth',2);hold on
 load(['C:\Users\Liao\Documents\50g\W7-X_OP2.1a_exp\FLT_result\connection_length\2D\' ...
-    'OP1.2 Standard (CAD) HINT equilibrium with beta=0.11%Lc11.mat'])
+    'OP1.2 Standard (CAD) HINT equilibrium with beta=0.11% + 3kA.mat'])
 semilogy(linspace(6000, 6100, 250),clenFwd.length(425,:) + clenBwd.length(425,:),'LineWidth',2);hold on
 load(['C:\Users\Liao\Documents\50g\W7-X_OP2.1a_exp\FLT_result\connection_length\1D\' ...
     'OP1.2 Standard (CAD)HINT equilibrium with beta=1.08%+5kA.mat'])

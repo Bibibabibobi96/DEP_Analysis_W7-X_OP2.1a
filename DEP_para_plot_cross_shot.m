@@ -86,6 +86,20 @@ else
     set(gca,'yticklabel',[])
 end
 
+ax2(6*analysis_number+1+j) = nexttile(6*analysis_number+1+j);
+plot(downsample( position(plunge_index(3* i +1):plunge_index(3* i +2)), ndowns),...
+    downsample( vplus(plunge_index(3* i +1):plunge_index(3* i +2)), ndowns));hold on
+plot(downsample( position(plunge_index(3* i +2):plunge_index(3* i +3)), ndowns),...
+    downsample( vplus(plunge_index(3* i +2):plunge_index(3* i +3)), ndowns));
+set(gca,'xticklabel',[],'fontsize', font_size)
+% legend('in','out')
+if j == 0 
+%     ylabel('I_{A}')
+    ylabel('V_{+}')
+else
+    set(gca,'yticklabel',[])
+end
+
 linkaxes(ax2,'x')
 
 if sum(shot_list < 221206033) == length(shot_list)
