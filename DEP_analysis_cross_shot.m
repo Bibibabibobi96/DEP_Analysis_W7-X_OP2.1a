@@ -5,7 +5,7 @@ tic
 analysis_number = input('How many plunges? ');
 
 cali_shot = input(['calibration shot number?',newline,...
-    '(0 = none, 1 = self calibration, 2 = 221207047) ']);
+    '(0 = none, 1 = self calibration, 2 = 221207047) ',newline]);
 
 for i = 1:analysis_number
     shot_list(i) = input(['shot number (',num2str(i),') ? ']);
@@ -69,8 +69,10 @@ for n = 1:analysis_number
     figure(303)
     DEP_current_by_r_cross_shot
 
-    if shot ~= shot_list(n+1)
+    if n < analysis_number - 1
+        if shot ~= shot_list(n+1)
         clear IA IB IA_raw IB_raw
+        end
     end
 
 end

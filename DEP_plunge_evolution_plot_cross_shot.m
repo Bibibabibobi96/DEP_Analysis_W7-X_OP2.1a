@@ -10,8 +10,8 @@ shading interp
 % colormap('hot')
 %     freezeColors;
 %     colorbar
-ylabel(['shot #',num2str(shot),newline,'plunge ',num2str(i),...
-    newline,'time (s)'],'fontsize',font_size+2)
+ylabel([num2str(floor(shot_list(n)/1000)),'.',num2str(mod(shot_list(n),100)) ...
+    ,newline,'plunge ',num2str(plunge(n)),newline,'time (s)'],'fontsize',font_size+2)
 
 if shot < 221206033
     clim([0 0.055])

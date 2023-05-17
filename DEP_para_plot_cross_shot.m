@@ -8,7 +8,8 @@ plot(downsample(position(plunge_index(3* i +1):plunge_index(3* i +2)), ndowns),.
 plot(downsample( position(plunge_index(3* i +2):plunge_index(3* i +3)), ndowns),...
     downsample( Te(plunge_index(3* i +2):plunge_index(3* i +3)), ndowns));
 set(gca,'xticklabel',[],'fontsize', font_size)
-title(['shot #',num2str(shot),newline,'plunge ',num2str(plunge(n))])
+title([num2str(floor(shot_list(n)/1000)),'.',num2str(mod(shot_list(n),100)) ...
+    ,newline,'plunge ',num2str(plunge(n))])
 legend('in','out')
 if j == 0
     ylabel('T_e')
