@@ -71,7 +71,7 @@ for n = 1:analysis_number
 
     if n < analysis_number - 1
         if shot ~= shot_list(n+1)
-        clear IA IB IA_raw IB_raw
+            clear IA IB IA_raw IB_raw
         end
     end
 
