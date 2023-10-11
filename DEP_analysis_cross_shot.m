@@ -21,7 +21,8 @@ figure(302) % Te, ne plot
 t2 = tiledlayout(7,analysis_number);
 
 figure(303) % current of channels plot
-t3 = tiledlayout(6,3);
+n_channel = 3;
+t3 = tiledlayout(n_channel + 1,3);
 
 for n = 1:analysis_number
 
@@ -81,7 +82,7 @@ figure(301)
 t1.TileSpacing = 'none';
 t1.Padding = 'compact';
 linkaxes(ax1,'x')
-sgtitle(['DEP collected current',newline],'FontSize',font_size+6)
+sgtitle('current (A), T_e (eV) & n_e (10^{18}m^{-3})','FontSize',font_size+6)
 colormap(colorm(20));
 
 figure(302)
@@ -98,7 +99,8 @@ figure(303)
 legend_text = [];
 for i = 1:analysis_number
     legend_text =  [legend_text;[num2str(floor(shot_list(i)/1000)),'.',...
-        num2str(mod(shot_list(i),100)),',',num2str(plunge(i))]];
+        num2str(mod(shot_list(i),100))]];
+    %         num2str(mod(shot_list(i),100)),',',num2str(plunge(i))]];
 end
 
 % for i = 1:3
@@ -111,10 +113,12 @@ end
 legend(h, legend_text,'Box','off','Location','best','color','none','Fontsize',11);
 % end
 
-linkaxes([ax3(1:10)],'xy')
-linkaxes([ax3(11:15)],'xy')
+linkaxes([ax3(1 : 2*n_channel)],'xy')
+linkaxes([ax3(2*n_channel+1 : 3*n_channel)],'xy')
 linkaxes(ax3,'x')
-linkaxes([ax3(1:10)],'xy')
-linkaxes([ax3(11:15)],'xy')
+linkaxes([ax3(1 : 2*n_channel)],'xy')
+linkaxes([ax3(2*n_channel+1 : 3*n_channel)],'xy')
 t3.TileSpacing = 'none';
 t3.Padding = 'compact';
+
+%%

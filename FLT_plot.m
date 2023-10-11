@@ -168,8 +168,8 @@ figure
 t = tiledlayout(3,3);
 
 ax(1) = nexttile(1,[2 1]);
-% pcolor(FLT.r,FLT.z,clenBwd.length);hold on
-pcolor(FLT.r,FLT.z,clenBwd);hold on
+pcolor(FLT.r,FLT.z,clenBwd.length);hold on
+% pcolor(FLT.r,FLT.z,clenBwd);hold on
 shading interp
 plot([6000 6100],[-0.17 -0.17],'LineWidth',2,'color','black')
 scatter(1000*r_flt,z_flt,1,'filled','k')
@@ -177,41 +177,43 @@ title('Backward','FontSize',font_size+4)
 ylabel('Z(m)','FontSize',font_size+4)
 
 ax(2) = nexttile(2,[2 1]);
-% pcolor(FLT.r,FLT.z,clenFwd.length);hold on
-pcolor(FLT.r,FLT.z,clenFwd);hold on
+pcolor(FLT.r,FLT.z,clenFwd.length);hold on
+% pcolor(FLT.r,FLT.z,clenFwd);hold on
 shading interp
 plot([6000 6100],[-0.17 -0.17],'LineWidth',2,'color','black')
 scatter(1000*r_flt,z_flt,1,'filled','k')
+set(gca,'yticklabel',[])
 title('Forward','FontSize',font_size+4)
 
 ax(3) = nexttile(3,[2 1]);
-% pcolor(FLT.r,FLT.z,clenBwd.length + clenFwd.length);hold on
-pcolor(FLT.r,FLT.z,clenBwd + clenFwd);hold on
+pcolor(FLT.r,FLT.z,clenBwd.length + clenFwd.length);hold on
+% pcolor(FLT.r,FLT.z,clenBwd + clenFwd);hold on
 shading interp
 plot([6000 6100],[-0.17 -0.17],'LineWidth',2,'color','black')
 scatter(1000*r_flt,z_flt,1,'filled','k')
+set(gca,'yticklabel',[])
 title('Total','FontSize',font_size+4)
 
 ax(4) = nexttile(7);
-% semilogy(FLT.r,clenBwd.length(425,:),'LineWidth',2);hold on
-semilogy(FLT.r,clenBwd(425,:),'LineWidth',2);hold on
+semilogy(FLT.r,clenBwd.length(425,:),'LineWidth',2);hold on
+% semilogy(FLT.r,clenBwd(425,:),'LineWidth',2);hold on
 ylabel('Lc (m)','FontSize',font_size+4)
 xlabel('R(mm)','FontSize',font_size+4)
 
 
 ax(5) = nexttile(8);
-% semilogy(FLT.r,clenFwd.length(425,:),'LineWidth',2);hold on
-semilogy(FLT.r,clenFwd(425,:),'LineWidth',2);hold on
+semilogy(FLT.r,clenFwd.length(425,:),'LineWidth',2);hold on
+% semilogy(FLT.r,clenFwd(425,:),'LineWidth',2);hold on
 xlabel('R(mm)','FontSize',font_size+4)
 
 
 ax(6) = nexttile(9);
-% semilogy(FLT.r,clenFwd.length(425,:) + clenBwd.length(425,:),'LineWidth',2);hold on
-semilogy(FLT.r,clenFwd(425,:) + clenBwd(425,:),'LineWidth',2);hold on
+semilogy(FLT.r,clenFwd.length(425,:) + clenBwd.length(425,:),'LineWidth',2);hold on
+% semilogy(FLT.r,clenFwd(425,:) + clenBwd(425,:),'LineWidth',2);hold on
 xlabel('R(mm)','FontSize',font_size+4)
 
 
-t.TileSpacing = 'tight';
+t.TileSpacing = 'none';
 t.Padding = 'none';
 
 
@@ -263,6 +265,8 @@ t.Padding = 'none';
 sgtitle('3kA standard with 1% \beta','FontSize',font_size+10)
 % sgtitle('standard with 1% \beta','FontSize',font_size+10)
 
+
+
 %%
 
 % changeIndices = find(diff(clenFwd.part_id(425,:)) ~= 0) + 1;
@@ -295,8 +299,8 @@ pcolor(linspace(6000, 6100, 250),linspace(-0.34, 0, 851),array);hold on
 shading interp
 plot([6000 6100],[-0.17 -0.17],'LineWidth',2,'color','black')
 ylabel('Z(m)','FontSize',12+4);title(gca,'divertor id')
-text(6010, -0.05, 'Backward','FontSize',14);
-xticks([]);
+text(6010, -0.05, 'A','FontSize',14);
+xticks([]);colorbar
 
 nexttile(4)
 array = clenFwd.part_id;
@@ -306,19 +310,27 @@ shading interp
 plot([6000 6100],[-0.17 -0.17],'LineWidth',2,'color','black')
 ylabel('Z(m)','FontSize',12+4);
 xlabel('R(mm)','FontSize',12+4);
-text(6010, -0.05, 'Forward','FontSize',14);
+text(6010, -0.05, 'B','FontSize',14);
 
 nexttile(2,[2,2]);
 for i = 165:169
     scatter3(components{i,1},components{i,2},components{i,3},0.3,[.7 .7 .7]);hold on
 end
 
-C = colorm(250 - index + 1);
-colormap(colorm(250));
+% C = colorm(250);
+% colormap(colorm(250));
+colormap(hsv);
 colorbar('Location','southoutside','AxisLocation','in')
-clim([6000+100*index/250 6100]);
+clim([6024 6100]);
+clear C
+C = colormap;
+C = interp1(1:size(C, 1), C, linspace(1, size(C, 1), 190));
+
 % title('standard + 5kA (1% \beta)','FontSize',16)
+% title('standard + 3kA (1% \beta)','FontSize',16)
 title('standard (1% \beta)','FontSize',16)
+
+view(-55,160)
 
 x = reshape(clenBwd.p_end(1,425,:),1,250);
 y = reshape(clenBwd.p_end(2,425,:),1,250);
@@ -363,11 +375,18 @@ i = 164 + n;
 % if n == 1;title('Backward');end
 % scatter3(components{i,1},components{i,2},components{i,3},0.3,[.7 .7 .7]);hold on
 if n == 2
-scatter3(divertor.L2(1,:),divertor.L2(2,:),divertor.L2(3,:),0.3,[.7 .7 .7]);hold on;%view(90,0)
+scatter3(divertor.L2(1,:),divertor.L2(2,:),divertor.L2(3,:),0.3,[.7 .7 .7]);hold on;
+% scatter3(divertor.L2(1,:),divertor.L2(2,:),divertor.L2(3,:),0.3,'k');hold on;
+%view(90,0)
+TextLocation('A','Location','westoutside','Fontsize',18);
 elseif n == 3
-scatter3(divertor.L3(1,:),divertor.L3(2,:),divertor.L3(3,:),0.3,[.7 .7 .7]);hold on;%view(0,160)
+scatter3(divertor.L3(1,:),divertor.L3(2,:),divertor.L3(3,:),0.3,[.7 .7 .7]);hold on;
+% scatter3(divertor.L3(1,:),divertor.L3(2,:),divertor.L3(3,:),0.3,'k');hold on;
+%view(0,160)
 elseif n == 5
-scatter3(divertor.U5(1,:),divertor.U5(2,:),-divertor.U5(3,:),0.3,[.7 .7 .7]);hold on;%view(-180,160)
+scatter3(divertor.U5(1,:),divertor.U5(2,:),-divertor.U5(3,:),0.3,[.7 .7 .7]);hold on;
+% scatter3(divertor.U5(1,:),divertor.U5(2,:),-divertor.U5(3,:),0.3,'k');hold on;
+%view(-180,160)
 end
 x = reshape(clenBwd.p_end(1,425,index:end),1,251-index) .* (clenBwd.part_id(425,index:end) == n);
 y = reshape(clenBwd.p_end(2,425,index:end),1,251-index) .* (clenBwd.part_id(425,index:end) == n);
@@ -375,8 +394,11 @@ z = reshape(clenBwd.p_end(3,425,index:end),1,251-index) .* (clenBwd.part_id(425,
 x(x == 0) = NaN;
 y(y == 0) = NaN;
 z(z == 0) = NaN;
-scatter3(x,y,-abs(z),15,C,"filled")
 % for i = 1:250; scatter3(x(i),y(i),z(i),10,C(i,:),"filled");end
+h = scatter3(x,y,-abs(z),15,C(index-60:length(C),:),"filled");  
+% h.MarkerEdgeColor = [0 1 0];
+% h.LineWidth = 0.001;
+% h.SizeData = 50;
 title(['divertor ',num2str(n)])
 axis equal
 axis off
@@ -393,11 +415,16 @@ i = 164 + n;
 % if n == 1;title('Forward');end
 % scatter3(components{i,1},components{i,2},components{i,3},0.3,[.7 .7 .7]);hold on
 if n == 1
-scatter3(divertor.U1(1,:),divertor.U1(2,:),-divertor.U1(3,:),0.3,[.7 .7 .7]);hold on;%view(-15,180);%view(172.4361,0)
+scatter3(divertor.U1(1,:),divertor.U1(2,:),-divertor.U1(3,:),0.3,[.7 .7 .7]);hold on;
+%view(-15,180);
+% view(172.4361,0)
+TextLocation('B','Location','westoutside','Fontsize',18);
 elseif n == 3
-scatter3(divertor.L3(1,:),divertor.L3(2,:),divertor.L3(3,:),0.3,[.7 .7 .7]);hold on;%view(0,160)
+scatter3(divertor.L3(1,:),divertor.L3(2,:),divertor.L3(3,:),0.3,[.7 .7 .7]);hold on;
+%view(0,160)
 elseif n == 5
-scatter3(divertor.U5(1,:),divertor.U5(2,:),-divertor.U5(3,:),0.3,[.7 .7 .7]);hold on;%view(-180,160)
+scatter3(divertor.U5(1,:),divertor.U5(2,:),-divertor.U5(3,:),0.3,[.7 .7 .7]);hold on;
+%view(-180,160)
 
 end
 x = reshape(clenFwd.p_end(1,425,index:end),1,251-index) .* (clenFwd.part_id(425,index:end) == n);
@@ -407,9 +434,12 @@ z = reshape(clenFwd.p_end(3,425,index:end),1,251-index) .* (clenFwd.part_id(425,
 x(x == 0) = NaN;
 y(y == 0) = NaN;
 z(z == 0) = NaN;
-scatter3(x,y,-abs(z),15,C,"filled")
+h = scatter3(x,y,-abs(z),15,C(index-60:length(C),:),"filled");
+% h.MarkerEdgeColor = [1 0 0];
+% h.LineWidth = 0.001;
+% h.SizeData = 50;
 % for i = 1:250; scatter3(x(i),y(i),z(i),10,C(i,:),"filled");end
-title(['divertor ',num2str(n)])
+title(['divertor ',num2str(n)],'FontSize',font_size + 2 )
 axis equal
 axis off
 % if sum(z>0) >0
@@ -422,7 +452,6 @@ end
 t.TileSpacing = 'none';
 t.Padding = 'none';
 % 
-% nexttile(1).View = [-55,160];
 % nexttile(10).View = [90,0];
 % nexttile(11).View = [0,160];
 % nexttile(12).View = [-180,160];

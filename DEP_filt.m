@@ -39,7 +39,7 @@ ylim([-1000 1000])
 % IA_raw = IA;
 % IB_raw = IB;
 
-clear IA_offset IB_offset
+clear IA_offset IB_offset IA IB
 for i = 1:11
     IA_offset(i) = mean(IA_raw(i,1:10000));
     IB_offset(i) = mean(IB_raw(i,1:10000));
@@ -57,7 +57,9 @@ plot(IB_offset)
 
 for i = 1:11
     IA(i,:) = filtfilt(b,a,IA_raw(i,:))-IA_offset(i);
+%     IA(i,:) = smoothdata(IA(i,:),"gaussian",2000);
     IB(i,:) = filtfilt(b,a,IB_raw(i,:))-IB_offset(i);
+%     IB(i,:) = smoothdata(IB(i,:),"gaussian",2000);
 end
 
 

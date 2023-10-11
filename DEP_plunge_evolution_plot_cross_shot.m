@@ -30,13 +30,15 @@ end
 if n == 1
     cb = colorbar('Location','northoutside');
     cb.Title.String = "A";
+    cb.Title.String = "I_{Backward}";
     cb.Title.FontSize = font_size+4;
 end
 set(gca,'fontsize', font_size)
 
 yyaxis right
-plot(position(plunge_index(3*i-2):plunge_index(3*i-1)),...
-    Te(plunge_index(3*i-2):plunge_index(3*i-1)),'b','LineStyle','-')
+[~,minIndex] = min(Te(plunge_index(3*i-2):plunge_index(3*i-1)));
+plot(position(plunge_index(3*i-2) + minIndex:plunge_index(3*i-1)),...
+    Te(plunge_index(3*i-2) + minIndex:plunge_index(3*i-1)),'b','LineStyle','-')
 plot(position(plunge_index(3*i-2):plunge_index(3*i-1)),...
     ne(plunge_index(3*i-2):plunge_index(3*i-1)),'r','LineStyle','-')
 legend('T_e','n_e','Location','east')
@@ -68,15 +70,16 @@ end
 
 if n == 1
     cb = colorbar('Location','northoutside');
-    cb.Title.String = "B";
+%     cb.Title.String = "B";
+    cb.Title.String = "I_{Forward}";
     cb.Title.FontSize = font_size+4;
 end
 set(gca,'fontsize', font_size)
 set(gca,'yticklabel',[],'fontsize', font_size)
 
 yyaxis right
-plot(position(plunge_index(3*i-2):plunge_index(3*i-1)),...
-    Te(plunge_index(3*i-2):plunge_index(3*i-1)),'b','LineStyle','-')
+plot(position(plunge_index(3*i-2) + minIndex:plunge_index(3*i-1)),...
+    Te(plunge_index(3*i-2) + minIndex:plunge_index(3*i-1)),'b','LineStyle','-')
 plot(position(plunge_index(3*i-2):plunge_index(3*i-1)),...
     ne(plunge_index(3*i-2):plunge_index(3*i-1)),'r','LineStyle','-')
 legend('T_e','n_e','Location','east')
@@ -105,7 +108,8 @@ elseif n == analysis_number
 end
 if n == 1
     cb = colorbar('Location','northoutside');
-    cb.Title.String = "net (B-A)";
+%     cb.Title.String = "net (B-A)";
+    cb.Title.String = "I_{net} = I_{Forward}-I_{Backward}";
     %         cb.Title.String = "B";
     cb.Title.FontSize = font_size+4;
 end
@@ -113,8 +117,8 @@ set(gca,'yticklabel',[],'fontsize', font_size)
 
 yyaxis right
 %     set(gca,'yticklabel',[],'fontsize', font_size)
-plot(position(plunge_index(3*i-2):plunge_index(3*i-1)),...
-    Te(plunge_index(3*i-2):plunge_index(3*i-1)),'b','LineStyle','-')
+plot(position(plunge_index(3*i-2) + minIndex:plunge_index(3*i-1)),...
+    Te(plunge_index(3*i-2) + minIndex:plunge_index(3*i-1)),'b','LineStyle','-')
 plot(position(plunge_index(3*i-2):plunge_index(3*i-1)),...
     ne(plunge_index(3*i-2):plunge_index(3*i-1)),'r','LineStyle','-')
 legend('T_e','n_e','Location','east')

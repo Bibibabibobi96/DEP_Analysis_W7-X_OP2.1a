@@ -158,7 +158,7 @@ for i = 1:7
 
                 ax4(i) = nexttile(4*i-3);
                 % imagesc(fft.T_f1 + time(1,plunge_index(3*j-2)), fft.F_f1/1000, abs(fft.S_f1));
-                imagesc(fft.position(1:min_index) + (5+5*i), fft.F_f1/1000, abs(fft.S_f1(:,1:min_index)));
+                imagesc(fft.position(1:min_index) + (10+5*i), fft.F_f1/1000, abs(fft.S_f1(:,1:min_index)));
                 axis xy;
                 clim([0 fre_limit]);
                 %                 ylim([0 50]);
@@ -176,7 +176,7 @@ for i = 1:7
 
                 ax4(i+5) = nexttile(4*i-2);
                 % imagesc(fft.T_f1 + time(1,plunge_index(3*j-2)), fft.F_f1/1000, abs(fft.S_f1));
-                imagesc(fft.position(min_index:end) + (5+5*i), fft.F_f1/1000, abs(fft.S_f1(:,min_index:end)));
+                imagesc(fft.position(min_index:end) + (10+5*i), fft.F_f1/1000, abs(fft.S_f1(:,min_index:end)));
                 axis xy;
                 yticks([]);
                 clim([0 fre_limit]);
@@ -193,7 +193,7 @@ for i = 1:7
 
                 ax4(i+10) = nexttile(4*i-1);
                 % imagesc(fft.T_f2 + time(1,plunge_index(3*j-2)), fft.F_f2/1000, abs(fft.S_f2));
-                imagesc(fft.position(1:min_index) + (5+5*i), fft.F_f2/1000, abs(fft.S_f2(:,1:min_index)));
+                imagesc(fft.position(1:min_index) + (10+5*i), fft.F_f2/1000, abs(fft.S_f2(:,1:min_index)));
                 axis xy;
                 yticks([]);
                 clim([0 fre_limit]);
@@ -210,7 +210,7 @@ for i = 1:7
 
                 ax4(i+15) = nexttile(4*i);
                 % imagesc(fft.T_f2 + time(1,plunge_index(3*j-2)), fft.F_f2/1000, abs(fft.S_f2));
-                imagesc(fft.position(min_index:end) + (5+5*i), fft.F_f2/1000, abs(fft.S_f2(:,min_index:end)));
+                imagesc(fft.position(min_index:end) + (10+5*i), fft.F_f2/1000, abs(fft.S_f2(:,min_index:end)));
                 axis xy;
                 yticks([]);
                 clim([0 fre_limit]);
@@ -238,7 +238,7 @@ for i = 1:7
 
                 ax5(i) = nexttile(4*i-3);
                 % imagesc(fft.T_f1 + time(1,plunge_index(3*j-2)), fft.F_f1/1000, abs(fft.S_f1));
-                imagesc(fft.position(1:min_index) + (5+5*i), fft.F_f1/1000, abs(fft.S_f1(:,1:min_index)).^2);
+                imagesc(fft.position(1:min_index) + (10+5*i), fft.F_f1/1000, abs(fft.S_f1(:,1:min_index)).^2);
                 axis xy;
                 clim([0 fre_limit^2]);
                 %                 ylim([0 50]);
@@ -256,7 +256,7 @@ for i = 1:7
 
                 ax5(i+5) = nexttile(4*i-2);
                 % imagesc(fft.T_f1 + time(1,plunge_index(3*j-2)), fft.F_f1/1000, abs(fft.S_f1));
-                imagesc(fft.position(min_index:end) + (5+5*i), fft.F_f1/1000, abs(fft.S_f1(:,min_index:end)).^2);
+                imagesc(fft.position(min_index:end) + (10+5*i), fft.F_f1/1000, abs(fft.S_f1(:,min_index:end)).^2);
                 axis xy;
                 yticks([]);
                 clim([0 fre_limit^2]);
@@ -273,7 +273,7 @@ for i = 1:7
 
                 ax5(i+10) = nexttile(4*i-1);
                 % imagesc(fft.T_f2 + time(1,plunge_index(3*j-2)), fft.F_f2/1000, abs(fft.S_f2));
-                imagesc(fft.position(1:min_index) + (5+5*i), fft.F_f2/1000, abs(fft.S_f2(:,1:min_index)).^2);
+                imagesc(fft.position(1:min_index) + (10+5*i), fft.F_f2/1000, abs(fft.S_f2(:,1:min_index)).^2);
                 axis xy;
                 yticks([]);
                 clim([0 fre_limit^2]);
@@ -290,7 +290,7 @@ for i = 1:7
 
                 ax5(i+15) = nexttile(4*i);
                 % imagesc(fft.T_f2 + time(1,plunge_index(3*j-2)), fft.F_f2/1000, abs(fft.S_f2));
-                imagesc(fft.position(min_index:end) + (5+5*i), fft.F_f2/1000, abs(fft.S_f2(:,min_index:end)).^2);
+                imagesc(fft.position(min_index:end) + (10+5*i), fft.F_f2/1000, abs(fft.S_f2(:,min_index:end)).^2);
                 axis xy;
                 yticks([]);
                 clim([0 fre_limit^2]);
@@ -313,9 +313,9 @@ for i = 1:7
                 figure(406);
 
                 ax6(i) = nexttile(4*i-3);
-                imagesc(fft.position(1:min_index) + (5+5*i), fft.cpsd_f1/1000, 10*log10(abs(fft.cpsd_1(:,1:min_index))) );
+                imagesc(fft.position(min_index:end) + (10+5*i), fft.cpsd_f1/1000, 10*log10(abs(fft.cpsd_1(:,min_index:end))) );
                 axis xy;
-                clim([-100 -80])
+%                 clim([0 fre_limit^2]);
                 ylim([0 50]);
                 set(gca,'fontsize', 14)
                 if i == 1
@@ -329,13 +329,13 @@ for i = 1:7
                     xticks([]);
                 end
 
-                ax6(i+5) = nexttile(4*i-2);
+                ax5(i+5) = nexttile(4*i-2);
                 % imagesc(fft.T_f1 + time(1,plunge_index(3*j-2)), fft.F_f1/1000, abs(fft.S_f1));
-                imagesc(fft.position(min_index:end) + (5+5*i), fft.cpsd_f1/1000, 10*log10(abs(fft.cpsd_1(:,min_index:end))) );
+                imagesc(fft.position(min_index:end) + (10+5*i), fft.F_f1/1000, abs(fft.S_f1(:,min_index:end)).^2);
                 axis xy;
                 yticks([]);
-                clim([-100 -80])
-                ylim([0 50]);
+                clim([0 fre_limit^2]);
+                %                 ylim([0 50]);
                 set(gca,'fontsize', 14)
                 if i == 1
                     title('backward out','FontSize',font_size+4);
@@ -346,13 +346,13 @@ for i = 1:7
                     xticks([]);
                 end
 
-                ax6(i+10) = nexttile(4*i-1);
+                ax5(i+10) = nexttile(4*i-1);
                 % imagesc(fft.T_f2 + time(1,plunge_index(3*j-2)), fft.F_f2/1000, abs(fft.S_f2));
-                imagesc(fft.position(1:min_index) + (5+5*i), fft.cpsd_f2/1000, 10*log10(abs(fft.cpsd_1(:,1:min_index))) );
+                imagesc(fft.position(1:min_index) + (10+5*i), fft.F_f2/1000, abs(fft.S_f2(:,1:min_index)).^2);
                 axis xy;
                 yticks([]);
-                clim([-100 -80])
-                ylim([0 50]);
+                clim([0 fre_limit^2]);
+                %                 ylim([0 50]);
                 set(gca,'fontsize', 14)
                 if i == 1
                     title('forward in','FontSize',font_size+4);
@@ -363,13 +363,13 @@ for i = 1:7
                     xticks([]);
                 end
 
-                ax6(i+15) = nexttile(4*i);
+                ax5(i+15) = nexttile(4*i);
                 % imagesc(fft.T_f2 + time(1,plunge_index(3*j-2)), fft.F_f2/1000, abs(fft.S_f2));
-                imagesc(fft.position(min_index:end) + (5+5*i), fft.cpsd_f2/1000, 10*log10(abs(fft.cpsd_1(:,min_index:end))) );
+                imagesc(fft.position(min_index:end) + (10+5*i), fft.F_f2/1000, abs(fft.S_f2(:,min_index:end)).^2);
                 axis xy;
                 yticks([]);
-                clim([-100 -80])
-                ylim([0 50]);
+                clim([0 fre_limit^2]);
+                %                 ylim([0 50]);
                 set(gca,'fontsize', 14)
                 if i == 1
                     title('forward out','FontSize',font_size+4);
@@ -380,6 +380,8 @@ for i = 1:7
                     xticks([]);
                 end
 
+            end
+        end
             end
         end
 
@@ -419,7 +421,7 @@ tf4.TileSpacing = 'none';
 tf4.Padding = 'compact';
 sgtitle('plunge 1')
 linkaxes(ax4,'xy')
-xlim([fft.position(min_index) + 10, 6145])
+xlim([fft.position(min_index) + 15, 6145])
 ylim([0 45])
 
 figure(405)
@@ -427,15 +429,15 @@ tf5.TileSpacing = 'none';
 tf5.Padding = 'compact';
 sgtitle('plunge 1')
 linkaxes(ax5,'xy')
-xlim([fft.position(min_index) + 10, 6145])
+xlim([fft.position(min_index) + 15, 6145])
 ylim([0 45])
 
 figure(406)
-tf6.TileSpacing = 'none';
-tf6.Padding = 'compact';
+tf5.TileSpacing = 'none';
+tf5.Padding = 'compact';
 sgtitle('plunge 1')
 linkaxes(ax6,'xy')
-xlim([fft.position(min_index) + 10, 6145])
+xlim([fft.position(min_index) + 15, 6145])
 ylim([0 45])
 
 clear ax tf1 tf2 tf3
